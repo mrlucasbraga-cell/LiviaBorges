@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -18,13 +18,12 @@
         :root {
             --bg: #06131d;
             --bg-secondary: #0b1c28;
-            --card: rgba(13, 30, 42, 0.85);
+            --card: rgba(13, 30, 42, 0.82);
             --gold: #c9a16a;
             --gold-light: #e4c08b;
             --text: #f5f5f5;
             --text-muted: #b7c0c9;
             --border: rgba(201, 161, 106, 0.15);
-            --shadow: rgba(0, 0, 0, 0.4);
         }
 
         * {
@@ -38,12 +37,24 @@
         }
 
         body {
-            background:
-                radial-gradient(circle at top left, rgba(11, 70, 98, 0.3), transparent 35%),
-                linear-gradient(180deg, #05111a 0%, #081722 100%);
-            color: var(--text);
             font-family: 'Inter', sans-serif;
+            color: var(--text);
             overflow-x: hidden;
+            background:
+                radial-gradient(circle at top left, rgba(11, 70, 98, 0.25), transparent 35%),
+                linear-gradient(180deg, #04111a 0%, #081722 100%);
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(rgba(201, 161, 106, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            opacity: .3;
+            z-index: -1;
         }
 
         .container {
@@ -64,40 +75,27 @@
         .section-title {
             text-align: center;
             color: var(--gold);
-            font-size: 2.6rem;
-            margin-bottom: 50px;
-            position: relative;
+            font-size: 2.8rem;
+            margin-bottom: 60px;
         }
 
         .section-title::after {
             content: "";
-            width: 90px;
+            width: 100px;
             height: 2px;
             background: var(--gold);
             display: block;
-            margin: 14px auto 0;
+            margin: 16px auto 0;
         }
-
-        /* HERO */
 
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            position: relative;
             overflow: hidden;
         }
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                linear-gradient(to right, rgba(4, 10, 15, 0.9), rgba(4, 10, 15, 0.65));
-        }
-
         .hero-content {
-            position: relative;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
@@ -105,21 +103,37 @@
         }
 
         .hero-image {
-            height: 650px;
-            border-radius: 30px;
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(12px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 680px;
+            position: relative;
+            overflow: hidden;
+            transition: transform .6s ease;
         }
 
-        .hero-image::after {
-            content: "ADICIONE A IMAGEM DA ESTÁTUA";
-            color: rgba(255,255,255,0.3);
-            letter-spacing: 3px;
-            font-size: .85rem;
+        .hero-image::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, transparent 50%, rgba(6, 19, 29, .35) 100%);
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 35px 50px rgba(0, 0, 0, .5));
+            transition: transform 1s ease, filter 1s ease;
+            animation: floatImage 8s ease-in-out infinite;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.05);
+            filter: drop-shadow(0 45px 60px rgba(0, 0, 0, .65));
+        }
+
+        .hero-text {
+            position: relative;
         }
 
         .logo {
@@ -129,46 +143,44 @@
         }
 
         .hero h1 {
-            font-size: 4.4rem;
-            line-height: 1;
+            font-size: 5rem;
+            line-height: .95;
             margin-bottom: 15px;
         }
 
         .subtitle {
             color: var(--gold);
-            letter-spacing: 2px;
             text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 30px;
         }
 
         .hero p {
             color: var(--text-muted);
+            line-height: 1.9;
             font-size: 1.1rem;
             max-width: 500px;
-            line-height: 1.8;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            color: #1d1d1d;
-            padding: 16px 30px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
             margin-top: 35px;
-            transition: .4s;
+            padding: 16px 30px;
+            border-radius: 14px;
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: #1b1b1b;
+            font-weight: 700;
+            transition: all .4s ease;
             box-shadow: 0 15px 30px rgba(201, 161, 106, .2);
         }
 
         .btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(201, 161, 106, .35);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(201, 161, 106, .35);
         }
-
-        /* CARDS */
 
         .grid-3 {
             display: grid;
@@ -179,22 +191,22 @@
         .card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 22px;
-            padding: 35px;
-            transition: .45s ease;
             backdrop-filter: blur(14px);
+            border-radius: 24px;
+            padding: 35px;
+            transition: all .4s ease;
         }
 
         .card:hover {
             transform: translateY(-10px);
             border-color: rgba(201, 161, 106, .4);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, .3);
         }
 
         .card i {
             color: var(--gold);
             font-size: 2rem;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .card h3 {
@@ -207,49 +219,62 @@
             line-height: 1.8;
         }
 
-        /* SOBRE */
-
         .about {
-            background: rgba(255,255,255,0.02);
+            background: rgba(255, 255, 255, .02);
         }
 
         .about-content {
             display: grid;
-            grid-template-columns: 1.2fr .8fr;
+            grid-template-columns: 1.1fr .9fr;
             gap: 60px;
             align-items: center;
         }
 
         .about h2 {
-            font-size: 3.2rem;
             color: var(--gold);
+            font-size: 3.2rem;
             margin-bottom: 25px;
         }
 
         .about p {
             color: var(--text-muted);
             line-height: 1.9;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
 
         .about-image {
             height: 520px;
-            border-radius: 24px;
+            overflow: hidden;
+            border-radius: 28px;
             border: 1px solid var(--border);
-            background: rgba(255,255,255,.03);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            position: relative;
+            transition: all .5s ease;
         }
 
-        .about-image::after {
-            content: "ADICIONE A FOTO DA ADVOGADA";
-            color: rgba(255,255,255,.3);
-            letter-spacing: 3px;
-            font-size: .85rem;
+        .about-image::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(6, 19, 29, .4), transparent 50%);
+            z-index: 2;
+            pointer-events: none;
         }
 
-        /* DEPOIMENTOS */
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .8s ease;
+        }
+
+        .about-image:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, .35);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.08);
+        }
 
         .testimonials {
             display: grid;
@@ -258,11 +283,11 @@
         }
 
         .testimonial {
-            background: #ffffff;
-            color: #333;
-            border-radius: 20px;
+            background: #fff;
+            color: #222;
+            border-radius: 22px;
             padding: 30px;
-            transition: .4s;
+            transition: all .4s ease;
         }
 
         .testimonial:hover {
@@ -271,20 +296,13 @@
 
         .testimonial i {
             color: var(--gold);
-            font-size: 1.4rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .testimonial p {
             line-height: 1.7;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
         }
-
-        .testimonial strong {
-            color: #111;
-        }
-
-        /* FAQ */
 
         .faq-grid {
             display: grid;
@@ -295,9 +313,9 @@
         .faq-item {
             background: var(--card);
             border: 1px solid var(--border);
-            margin-bottom: 15px;
-            border-radius: 14px;
+            border-radius: 16px;
             overflow: hidden;
+            margin-bottom: 15px;
         }
 
         .faq-question {
@@ -311,9 +329,9 @@
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            color: var(--text-muted);
-            transition: .4s;
             padding: 0 22px;
+            color: var(--text-muted);
+            transition: all .4s ease;
         }
 
         .faq-item.active .faq-answer {
@@ -324,7 +342,7 @@
         .contact-box {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 22px;
+            border-radius: 24px;
             padding: 35px;
         }
 
@@ -337,22 +355,20 @@
             border-radius: 12px;
             text-decoration: none;
             color: #fff;
-            transition: .4s;
+            transition: all .4s ease;
         }
 
         .whatsapp {
-            background: #1d8f4b;
+            background: #1f9d53;
         }
 
         .email {
-            background: #24394b;
+            background: #203849;
         }
 
         .contact-btn:hover {
             transform: translateX(8px);
         }
-
-        /* FOOTER */
 
         footer {
             padding: 40px 0;
@@ -360,9 +376,9 @@
 
         .footer-box {
             background: linear-gradient(135deg, #d4af79, #c69b61);
+            color: #1d1d1d;
             border-radius: 24px;
             padding: 35px;
-            color: #1a1a1a;
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: 20px;
@@ -373,12 +389,10 @@
             justify-self: end;
         }
 
-        /* ANIMAÇÃO */
-
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: 1s;
+            transform: translateY(50px);
+            transition: opacity .9s ease, transform .9s ease;
         }
 
         .reveal.active {
@@ -386,24 +400,40 @@
             transform: translateY(0);
         }
 
-        @media(max-width: 992px) {
+        @keyframes floatImage {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @media (max-width: 992px) {
 
             .hero-content,
             .about-content,
-            .faq-grid,
-            .footer-box,
             .grid-3,
-            .testimonials {
+            .testimonials,
+            .faq-grid,
+            .footer-box {
                 grid-template-columns: 1fr;
             }
 
-            .hero h1 {
-                font-size: 3.2rem;
+            .hero {
+                padding-top: 40px;
             }
 
             .hero-image {
                 order: -1;
                 height: 450px;
+            }
+
+            .hero h1 {
+                font-size: 3.3rem;
             }
 
             .footer-btn {
@@ -419,9 +449,11 @@
 
         <div class="container hero-content">
 
-            <div class="hero-image reveal"></div>
+            <div class="hero-image reveal">
+                <img src="estatua-justica.png" alt="Estátua da Justiça">
+            </div>
 
-            <div class="reveal">
+            <div class="hero-text reveal">
 
                 <div class="logo">LB</div>
 
@@ -457,30 +489,19 @@
                 <div class="card reveal">
                     <i class="fa-solid fa-building-columns"></i>
                     <h3>Direito Penal</h3>
-
-                    <p>
-                        Defesa em inquéritos policiais, audiências, crimes em geral e atuação estratégica em todas as fases do processo.
-                    </p>
+                    <p>Defesa em inquéritos policiais, audiências e atuação estratégica em todas as fases do processo.</p>
                 </div>
 
                 <div class="card reveal">
                     <i class="fa-solid fa-users"></i>
-
                     <h3>Assessoria Jurídica</h3>
-
-                    <p>
-                        Suporte especializado para prevenção de riscos e tomada de decisões seguras e eficazes.
-                    </p>
+                    <p>Suporte especializado para prevenção de riscos e tomada de decisões seguras.</p>
                 </div>
 
                 <div class="card reveal">
                     <i class="fa-solid fa-scale-balanced"></i>
-
                     <h3>Processos de Apelação</h3>
-
-                    <p>
-                        Atuação em recursos e apelações com estratégia técnica para buscar os melhores resultados.
-                    </p>
+                    <p>Atuação em recursos e apelações para buscar os melhores resultados.</p>
                 </div>
 
             </div>
@@ -497,21 +518,17 @@
 
                 <h2>Dra. Livia Borges</h2>
 
-                <p>
-                    Mais de 10 anos de experiência em Direito Penal, atuando com excelência na defesa dos direitos e garantias fundamentais.
-                </p>
+                <p>Mais de 10 anos de experiência em Direito Penal, com atuação estratégica e comprometida com a defesa dos direitos fundamentais.</p>
 
-                <p>
-                    Minha formação sólida e atualização constante permitem oferecer soluções jurídicas personalizadas para cada caso.
-                </p>
+                <p>Minha formação sólida e atualização constante me permitem oferecer soluções jurídicas eficazes e personalizadas.</p>
 
-                <p>
-                    Cada história é única e merece ser tratada com respeito, atenção e responsabilidade.
-                </p>
+                <p>Cada história é única e merece ser tratada com respeito, atenção e responsabilidade.</p>
 
             </div>
 
-            <div class="about-image reveal"></div>
+            <div class="about-image reveal">
+                <img src="livia-borges.jpg" alt="Dra. Livia Borges">
+            </div>
 
         </div>
 
@@ -566,7 +583,7 @@
                         </div>
 
                         <div class="faq-answer">
-                            <p>A consulta é realizada de forma personalizada para compreender o caso e orientar sobre as melhores estratégias.</p>
+                            <p>A consulta é personalizada para compreender o caso e orientar sobre as melhores estratégias.</p>
                         </div>
                     </div>
 
@@ -577,7 +594,7 @@
                         </div>
 
                         <div class="faq-answer">
-                            <p>Sim. O acompanhamento jurídico desde o início é essencial para garantir seus direitos.</p>
+                            <p>Sim. O acompanhamento jurídico desde o início é fundamental.</p>
                         </div>
                     </div>
 
@@ -588,7 +605,7 @@
                         </div>
 
                         <div class="faq-answer">
-                            <p>O prazo varia conforme a complexidade do caso e a instância judicial.</p>
+                            <p>O prazo varia conforme a complexidade e a instância judicial.</p>
                         </div>
                     </div>
 
@@ -642,17 +659,15 @@
     </footer>
 
     <script>
-
         const reveals = document.querySelectorAll('.reveal');
 
         function revealElements() {
 
             reveals.forEach(item => {
 
-                const top = item.getBoundingClientRect().top;
                 const visible = window.innerHeight - 100;
 
-                if (top < visible) {
+                if (item.getBoundingClientRect().top < visible) {
                     item.classList.add('active');
                 }
 
@@ -671,7 +686,6 @@
             });
 
         });
-
     </script>
 
 </body>
