@@ -13,6 +13,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+    <!-- ScrollReveal para animações de rolagem -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
     <style>
         :root {
             --bg: #030a10;
@@ -41,7 +44,6 @@
         body {
             font-family: 'Inter', sans-serif;
             color: var(--text-white);
-            /* Adicionado o background.png repetido de forma suave com overlay escuro */
             background: linear-gradient(180deg, rgba(3, 10, 16, 0.95) 0%, rgba(5, 16, 26, 0.98) 100%), url('background.png');
             background-attachment: fixed;
             overflow-x: hidden;
@@ -65,12 +67,14 @@
             font-weight: 500;
         }
 
-        /* --- HERO SECTION COM RECORTE E IMAGEM DA ESTÁTUA --- */
+        /* --- HERO SECTION COM RECORTE E IMAGEM DA ESTÁTUA (background2 apenas aqui) --- */
         .hero-outer {
             position: relative;
-            background: linear-gradient(180deg, #02070b 0%, #061524 100%);
+            /* Aplicado o background2.png com overlay escuro suave apenas no topo */
+            background: linear-gradient(180deg, rgba(2, 7, 11, 0.9) 0%, rgba(6, 21, 36, 0.95) 100%), url('background2.png');
+            background-size: cover;
+            background-position: center;
             padding-bottom: 100px;
-            /* Recorte convexo inferior idêntico à imagem de referência */
             clip-path: ellipse(140% 100% at 50% 0%);
         }
 
@@ -300,7 +304,7 @@
             filter: brightness(0.95);
         }
 
-        /* --- DEPOIMENTOS (6 CARDS COM OVERLAP DE FOTO CIRCULAR) --- */
+        /* --- DEPOIMENTOS --- */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -327,7 +331,7 @@
             top: -37px;
             left: 50%;
             transform: translateX(-50%);
-            border: 4px solid #040e16; /* Corresponde ao fundo atrás do card */
+            border: 4px solid #040e16;
             overflow: hidden;
         }
 
@@ -450,7 +454,7 @@
         .contact-link.wp { background-color: #1e874b; }
         .contact-link.ml { background-color: #243544; border: 1px solid rgba(255,255,255,0.05); }
 
-        /* --- FOOTER BEGE --- */
+        /* --- FOOTER --- */
         footer {
             padding: 60px 0;
         }
@@ -556,15 +560,13 @@
 
 <body>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (Com o background2) -->
     <div class="hero-outer">
         <section class="container hero-grid">
-            <!-- Imagem da estátua posicionada à esquerda -->
             <div class="hero-image-box">
                 <img src="estatua-justica.png" alt="Estátua da Justiça">
             </div>
 
-            <!-- Conteúdo de texto e logo posicionado à direita -->
             <div class="hero-text-box">
                 <div class="main-logo-wrapper">
                     <div class="main-logo">LB</div>
@@ -633,7 +635,7 @@
             <div class="about-text">
                 <h2>Dra. Livia Borges</h2>
                 <p>Mais de 10 anos de experiência em Direito Penal, com atuação estratégica e comprometida com a defesa de direitos e garantias fundamentais.</p>
-                <p>Minha formação sólida e atualização constante me permitem oferecer soluções jurídicas eficazes e personalizadas para cada caso. Atuo com ética, discrição e dedicação, buscando sempre a melhor estratégia para alcançar justiça e resultados.</p>
+                <p>Minha formação sólida e atualização constante me permitem oferecer soluções jurídicas efficaces e personalizadas para cada caso. Atuo com ética, discrição e dedicação, buscando sempre a melhor estratégia para alcançar justiça e resultados.</p>
                 <p>Meu compromisso é com pessoas, não apenas com processos. Cada história é única e merece ser tratada com respeito, atenção e responsabilidade.</p>
             </div>
             <div class="about-img-box">
@@ -642,7 +644,7 @@
         </div>
     </section>
 
-    <!-- DEPOIMENTOS (OS 6 COMPLETOS COM AVATAR) -->
+    <!-- DEPOIMENTOS -->
     <section>
         <div class="container">
             <div class="section-header">
@@ -765,7 +767,7 @@
         </div>
     </section>
 
-    <!-- FOOTER BEGE CORRIGIDO -->
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-card">
@@ -801,6 +803,44 @@
                 }
             });
         });
+
+        // Configuração das animações do ScrollReveal
+        const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '40px',
+            duration: 1000,
+            delay: 200,
+            reset: false // Altere para true se quiser que as animações repitam ao subir a página
+        });
+
+        // Animações da seção topo (Hero)
+        sr.reveal('.hero-image-box', { origin: 'left', distance: '60px' });
+        sr.reveal('.main-logo-wrapper', { delay: 100 });
+        sr.reveal('.hero-title', { delay: 300 });
+        sr.reveal('.hero-subtitle', { delay: 450 });
+        sr.reveal('.hero-description', { delay: 600 });
+        sr.reveal('.hero-text-box .btn-gold', { delay: 750 });
+
+        // Títulos de todas as seções
+        sr.reveal('.section-header', { distance: '20px' });
+
+        // Cards de Áreas de Atuação (efeito cascata)
+        sr.reveal('.act-card', { interval: 200 });
+        sr.reveal('.center-action', { delay: 400 });
+
+        // Seção Sobre a Doutora
+        sr.reveal('.about-text p', { interval: 150 });
+        sr.reveal('.about-img-box', { origin: 'right', distance: '50px', delay: 300 });
+
+        // Cards de Depoimentos (efeito cascata rápido)
+        sr.reveal('.testi-card', { interval: 150, distance: '50px' });
+
+        // FAQ e Bloco de Contato Lateral
+        sr.reveal('.faq-item', { interval: 150 });
+        sr.reveal('.side-contact-box', { origin: 'right', distance: '40px', delay: 200 });
+
+        // Rodapé
+        sr.reveal('.footer-card', { distance: '30px' });
     </script>
 </body>
 </html>
