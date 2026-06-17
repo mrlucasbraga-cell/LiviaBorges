@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dra. Livia Borges | Advocacia e Consultoria Jurídica</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #06131d;
+            --bg-secondary: #0b1c28;
+            --card: rgba(13, 30, 42, 0.85);
+            --gold: #c9a16a;
+            --gold-light: #e4c08b;
+            --text: #f5f5f5;
+            --text-muted: #b7c0c9;
+            --border: rgba(201, 161, 106, 0.15);
+            --shadow: rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at top left, rgba(11, 70, 98, 0.3), transparent 35%),
+                linear-gradient(180deg, #05111a 0%, #081722 100%);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        section {
+            padding: 90px 0;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--gold);
+            font-size: 2.6rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            width: 90px;
+            height: 2px;
+            background: var(--gold);
+            display: block;
+            margin: 14px auto 0;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(to right, rgba(4, 10, 15, 0.9), rgba(4, 10, 15, 0.65));
+        }
+
+        .hero-content {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-image {
+            height: 650px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image::after {
+            content: "ADICIONE A IMAGEM DA ESTÁTUA";
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 3px;
+            font-size: .85rem;
+        }
+
+        .logo {
+            color: var(--gold);
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: 4.4rem;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 500px;
+            line-height: 1.8;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: #1d1d1d;
+            padding: 16px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 35px;
+            transition: .4s;
+            box-shadow: 0 15px 30px rgba(201, 161, 106, .2);
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(201, 161, 106, .35);
+        }
+
+        /* CARDS */
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 35px;
+            transition: .45s ease;
+            backdrop-filter: blur(14px);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(201, 161, 106, .4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+        }
+
+        .card i {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 25px;
+        }
+
+        .card h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* SOBRE */
+
+        .about {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about h2 {
+            font-size: 3.2rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+        }
+
+        .about p {
+            color: var(--text-muted);
+            line-height: 1.9;
+            margin-bottom: 18px;
+        }
+
+        .about-image {
+            height: 520px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .about-image::after {
+            content: "ADICIONE A FOTO DA ADVOGADA";
+            color: rgba(255,255,255,.3);
+            letter-spacing: 3px;
+            font-size: .85rem;
+        }
+
+        /* DEPOIMENTOS */
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .testimonial {
+            background: #ffffff;
+            color: #333;
+            border-radius: 20px;
+            padding: 30px;
+            transition: .4s;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-8px);
+        }
+
+        .testimonial i {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .testimonial p {
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .testimonial strong {
+            color: #111;
+        }
+
+        /* FAQ */
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1.3fr .7fr;
+            gap: 30px;
+        }
+
+        .faq-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            margin-bottom: 15px;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 22px;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            color: var(--text-muted);
+            transition: .4s;
+            padding: 0 22px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding: 0 22px 22px;
+        }
+
+        .contact-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 35px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px;
+            margin-top: 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #fff;
+            transition: .4s;
+        }
+
+        .whatsapp {
+            background: #1d8f4b;
+        }
+
+        .email {
+            background: #24394b;
+        }
+
+        .contact-btn:hover {
+            transform: translateX(8px);
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 40px 0;
+        }
+
+        .footer-box {
+            background: linear-gradient(135deg, #d4af79, #c69b61);
+            border-radius: 24px;
+            padding: 35px;
+            color: #1a1a1a;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .footer-btn {
+            justify-self: end;
+        }
+
+        /* ANIMAÇÃO */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 1s;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media(max-width: 992px) {
+
+            .hero-content,
+            .about-content,
+            .faq-grid,
+            .footer-box,
+            .grid-3,
+            .testimonials {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+
+            .hero-image {
+                order: -1;
+                height: 450px;
+            }
+
+            .footer-btn {
+                justify-self: start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+
+        <div class="container hero-content">
+
+            <div class="hero-image reveal"></div>
+
+            <div class="reveal">
+
+                <div class="logo">LB</div>
+
+                <h1>Dra. Livia Borges</h1>
+
+                <div class="subtitle">
+                    Advocacia e Consultoria Jurídica
+                </div>
+
+                <p>
+                    Estratégia, ética e excelência na defesa dos seus direitos.
+                </p>
+
+                <a href="#contato" class="btn">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    Agendar Consulta
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section>
+
+        <div class="container">
+
+            <h2 class="section-title reveal">Áreas de Atuação</h2>
+
+            <div class="grid-3">
+
+                <div class="card reveal">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <h3>Direito Penal</h3>
+
+                    <p>
+                        Defesa em inquéritos policiais, audiências, crimes em geral e atuação estratégica em todas as fases do processo.
+                    </p>
+                </div>
+
+                <div class="card reveal">
+                    <i class="fa-solid fa-users"></i>
+
+                    <h3>Assessoria Jurídica</h3>
+
+                    <p>
+                        Suporte especializado para prevenção de riscos e tomada de decisões seguras e eficazes.
+                    </p>
+                </div>
+
+                <div class="card reveal">
+                    <i class="fa-solid fa-scale-balanced"></i>
+
+                    <h3>Processos de Apelação</h3>
+
+                    <p>
+                        Atuação em recursos e apelações com estratégia técnica para buscar os melhores resultados.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="about">
+
+        <div class="container about-content">
+
+            <div class="reveal">
+
+                <h2>Dra. Livia Borges</h2>
+
+                <p>
+                    Mais de 10 anos de experiência em Direito Penal, atuando com excelência na defesa dos direitos e garantias fundamentais.
+                </p>
+
+                <p>
+                    Minha formação sólida e atualização constante permitem oferecer soluções jurídicas personalizadas para cada caso.
+                </p>
+
+                <p>
+                    Cada história é única e merece ser tratada com respeito, atenção e responsabilidade.
+                </p>
+
+            </div>
+
+            <div class="about-image reveal"></div>
+
+        </div>
+
+    </section>
+
+    <section>
+
+        <div class="container">
+
+            <h2 class="section-title reveal">Depoimentos</h2>
+
+            <div class="testimonials">
+
+                <div class="testimonial reveal">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"Profissional extremamente dedicada e atenciosa."</p>
+                    <strong>— Ana Costa</strong>
+                </div>
+
+                <div class="testimonial reveal">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"Atuação impecável e resultados excelentes."</p>
+                    <strong>— Ricardo Lima</strong>
+                </div>
+
+                <div class="testimonial reveal">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>"Recomendo a Dra. Livia para quem busca segurança jurídica."</p>
+                    <strong>— Fernanda Soares</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="contato">
+
+        <div class="container">
+
+            <h2 class="section-title reveal">Perguntas Frequentes</h2>
+
+            <div class="faq-grid">
+
+                <div class="reveal">
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Como funciona a consulta jurídica?
+                            <span>+</span>
+                        </div>
+
+                        <div class="faq-answer">
+                            <p>A consulta é realizada de forma personalizada para compreender o caso e orientar sobre as melhores estratégias.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Posso contratar um advogado durante uma investigação?
+                            <span>+</span>
+                        </div>
+
+                        <div class="faq-answer">
+                            <p>Sim. O acompanhamento jurídico desde o início é essencial para garantir seus direitos.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Quanto tempo dura um processo?
+                            <span>+</span>
+                        </div>
+
+                        <div class="faq-answer">
+                            <p>O prazo varia conforme a complexidade do caso e a instância judicial.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="contact-box reveal">
+
+                    <h3>Ficou com alguma dúvida?</h3>
+
+                    <a href="#" class="contact-btn whatsapp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Atendimento via WhatsApp
+                    </a>
+
+                    <a href="#" class="contact-btn email">
+                        <i class="fa-regular fa-envelope"></i>
+                        Atendimento por E-mail
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-box reveal">
+
+                <div>
+                    <strong>Agende sua consulta e tenha uma defesa estratégica ao seu lado.</strong>
+                </div>
+
+                <div>
+                    (31) 99999-9999<br>
+                    contato@liviaborges.adv.br
+                </div>
+
+                <a href="#" class="btn footer-btn">
+                    Agendar Consulta
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script>
+
+        const reveals = document.querySelectorAll('.reveal');
+
+        function revealElements() {
+
+            reveals.forEach(item => {
+
+                const top = item.getBoundingClientRect().top;
+                const visible = window.innerHeight - 100;
+
+                if (top < visible) {
+                    item.classList.add('active');
+                }
+
+            });
+
+        }
+
+        window.addEventListener('scroll', revealElements);
+
+        revealElements();
+
+        document.querySelectorAll('.faq-question').forEach(item => {
+
+            item.addEventListener('click', () => {
+                item.parentElement.classList.toggle('active');
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
