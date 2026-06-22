@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- ScrollReveal para animações de rolagem -->
     <script src="https://unpkg.com/scrollreveal"></script>
 
     <style>
@@ -561,7 +560,6 @@
 
 <body>
 
-    <!-- HERO SECTION (Com o background2) -->
     <div class="hero-outer">
         <section class="container hero-grid">
             <div class="hero-image-box">
@@ -588,7 +586,6 @@
         </section>
     </div>
 
-    <!-- ÁREAS DE ATUAÇÃO -->
     <section>
         <div class="container">
             <div class="section-header">
@@ -630,7 +627,6 @@
         </div>
     </section>
 
-    <!-- SOBRE A DOUTORA -->
     <section class="about-section">
         <div class="container about-grid">
             <div class="about-text">
@@ -645,7 +641,6 @@
         </div>
     </section>
 
-    <!-- DEPOIMENTOS -->
     <section>
         <div class="container">
             <div class="section-header">
@@ -654,7 +649,6 @@
             </div>
 
             <div class="testimonials-grid">
-                <!-- Card 1 -->
                 <div class="testi-card">
                     <div class="avatar-circle">
                         <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=60" alt="Ana Costa">
@@ -664,7 +658,6 @@
                     <span class="testi-author">— Ana Costa, Empresária</span>
                 </div>
 
-                <!-- Card 2 -->
                 <div class="testi-card">
                     <div class="avatar-circle">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=60" alt="Ricardo Lima">
@@ -674,7 +667,6 @@
                     <span class="testi-author">— Ricardo Lima, Engenheiro</span>
                 </div>
 
-                <!-- Card 3 -->
                 <div class="testi-card">
                     <div class="avatar-circle">
                         <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&auto=format&fit=crop&q=60" alt="Fernanda Soares">
@@ -684,7 +676,6 @@
                     <span class="testi-author">— Fernanda Soares, Médica</span>
                 </div>
 
-                <!-- Card 4 -->
                 <div class="testi-card">
                     <div class="avatar-circle">
                         <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=60" alt="Carlos Albuquerque">
@@ -694,7 +685,6 @@
                     <span class="testi-author">— Carlos Albuquerque, Diretor Financeiro</span>
                 </div>
 
-                <!-- Card 5 -->
                 <div class="testi-card">
                     <div class="avatar-circle">
                         <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&auto=format&fit=crop&q=60" alt="Mariana Figueiredo">
@@ -704,7 +694,6 @@
                     <span class="testi-author">— Mariana Figueiredo, Arquiteta</span>
                 </div>
 
-                <!-- Card 6 -->
                 <div class="testi-card">
                     <div class="avatar-circle">
                         <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&auto=format&fit=crop&q=60" alt="João Henrique">
@@ -717,7 +706,6 @@
         </div>
     </section>
 
-    <!-- PERGUNTAS FREQUENTES & CONTATO -->
     <section id="contato">
         <div class="container faq-contact-grid">
             
@@ -768,13 +756,12 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-card">
                 <div class="footer-info-left">
                     <i class="fa-solid fa-calendar-check"></i>
-                    <p>Agende sua consulta e tenha uma defesa estratégica ao seu lado.<br><span style="font-size: 0.85rem; font-weight: normal; opacity: 0.8;">Atendimento sigiloso e personalizado.</span></p>
+                    <p>Agende sua consulta e tenha uma defense estratégica ao seu lado.<br><span style="font-size: 0.85rem; font-weight: normal; opacity: 0.8;">Atendimento sigiloso e personalizado.</span></p>
                 </div>
                 
                 <div class="footer-channels">
@@ -791,6 +778,36 @@
     </footer>
 
     <script>
+        // --- TRAVAS DE SEGURANÇA (Anti-Cópia / Anti-F12 / Anti-Inspecionar) ---
+        
+        // 1. Bloquear clique direito (Menu de Contexto / Inspecionar)
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        // 2. Bloquear atalhos de teclado comuns de desenvolvedor e cópia
+        document.addEventListener('keydown', event => {
+            // Bloqueia F12
+            if (event.key === 'F12') {
+                event.preventDefault();
+                return false;
+            }
+            // Bloqueia Ctrl+Shift+I (Inspecionar), Ctrl+Shift+C (Inspecionar Elemento), Ctrl+Shift+J (Console) e Ctrl+U (Ver Código Fonte)
+            if (event.ctrlKey && (event.shiftKey && ['I', 'C', 'J'].includes(event.key.toUpperCase()) || event.key.toUpperCase() === 'U')) {
+                event.preventDefault();
+                return false;
+            }
+            // Bloqueia Ctrl+C (Copiar) e Ctrl+S (Salvar Página)
+            if (event.ctrlKey && ['C', 'S'].includes(event.key.toUpperCase())) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
+        // 3. Bloquear seleção de texto via JavaScript (Garante impedimento de cópia)
+        document.addEventListener('selectstart', event => event.preventDefault());
+
+
+        // --- LÓGICA DO SITE (Mantida original) ---
+
         // Lógica simples do FAQ Accordion
         document.querySelectorAll('.faq-trigger').forEach(trigger => {
             trigger.addEventListener('click', () => {
